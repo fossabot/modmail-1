@@ -1,0 +1,36 @@
+### Docker compose setup file
+# This file can be used to quickly set up a development server
+# with code auto-reloading
+
+version: "3.7"
+
+x-restart-policy: &restart_policy
+  restart: always
+
+services:
+  web:
+    << : *restart_policy
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: "python -m uvicorn main:app --app-dir website"
+    ports:
+      - "127.0.0.1:8000:8000"
+    tty: true
+    volumes:
+      - .:/app:ro
+      - staticfiles:/var/www/static
+  bot:
+    << : *restart_policy
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: "python -m modmail"
+    volumes:
+      - .:/app:ro
+    tty: true
+    depends_on:
+      - web
+
+volumes:
+  staticfiles:
