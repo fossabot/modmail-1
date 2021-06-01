@@ -13,13 +13,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: "python -m uvicorn main:app --app-dir website"
     ports:
-      - "127.0.0.1:8000:8000"
+      - "127.0.0.1:8000:80"
     tty: true
     volumes:
       - .:/app:ro
       - staticfiles:/var/www/static
+    environment:
+      - APP_MODULE=website.main:app
+
   bot:
     << : *restart_policy
     build:
