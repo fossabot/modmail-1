@@ -27,7 +27,7 @@ services:
       dockerfile: Dockerfile
     command: "python -m modmail"
     volumes:
-      - .:/app:ro
+      - .:/app
     tty: true
     depends_on:
       - web
