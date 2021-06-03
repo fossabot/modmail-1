@@ -1,4 +1,5 @@
 ### Docker compose setup file
+#
 # This file can be used to quickly set up a development server
 # with code auto-reloading
 
@@ -7,7 +8,38 @@ version: "3.7"
 x-restart-policy: &restart_policy
   restart: always
 
+networks:
+  loki:
+
 services:
+  loki:
+    image: grafana/loki:2.2.1
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - loki
+
+  promtail:
+    image: grafana/promtail:2.2.1
+    volumes:
+      - /var/log:/var/log
+    command: -config.file=/etc/promtail/config.yml
+    networks:
+      - loki
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    networks:
+      - loki
+
+  olli:
+    image: ghcr.io/python-discord/olli:latest
+    env_file:
+      .env
+
   web:
     << : *restart_policy
     build:

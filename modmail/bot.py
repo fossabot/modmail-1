@@ -75,3 +75,4 @@ class ModmailBot(commands.Bot):
     async def on_ready(self) -> None:
         """Send basic login success message."""
         log.info("Logged in as %s", self.user)
+        log.error("test")
