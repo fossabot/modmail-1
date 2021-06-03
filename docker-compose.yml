@@ -37,6 +37,12 @@ services:
 
   olli:
     image: ghcr.io/python-discord/olli:latest
+    volumes:
+      - type: bind
+        source: ./olli.toml
+        target: /config/olli.toml
+    networks:
+      - loki
     env_file:
       .env
 

@@ -2,13 +2,13 @@
 interval_minutes = 5
 
 [loki]
-api_url = "http://loki:3100/"
+api_url = "http://loki:3100"
 jobs = [
     "bot", "site"
 ]
 
 [discord]
-WEBHOOK_URL = "https://discord.com/api/webhooks/849632109304086579/-e5kUMlLW9aLhuxUbTIimy3bqClD4Uy3662WlEkjyZ1It7cgwU30x_7YWDxc-nJhpn1W"
+WEBHOOK_URL = "YOUR DISCORD WEBHOOK URL HERE"
 
 [[olli.tokens]]
 token = "ERROR"
