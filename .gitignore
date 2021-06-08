@@ -135,5 +135,6 @@ logs
 # Editors
 .vscode
 
-# Configuration
+# Custom User Configuration
 *config.toml
+docker-compose.override.yml
