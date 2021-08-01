@@ -126,6 +126,7 @@ dmypy.json
 .pyre/
 
 # Editors
+.vscode
 .vscode/
 .idea/
 
@@ -135,7 +136,8 @@ logs
 # Editors
 .vscode
 
-# Custom User Configuration
+# Configuration
 *config.toml
+
+# Custom docker compose override
 docker-compose.override.yml
-olli.toml
